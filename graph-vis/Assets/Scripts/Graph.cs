@@ -21,12 +21,9 @@ public class Graph : MonoBehaviour
         for (int i = 0; i < points.Length; i++)
         {
             Transform point = points[i] = Instantiate(pointPrefab);
-            
 
             //setting cubes from -1 to 1
             position.x = (i + 0.5f) * step - 1f;
-
-            //position.y = position.x * position.x * position.x;
 
             point.localPosition = position;   
             point.localScale = scale;
@@ -41,7 +38,7 @@ public class Graph : MonoBehaviour
         {
             Transform point = points[i];
             Vector3 position = point.localPosition;
-            position.y = Mathf.Sin(Mathf.PI * (position.x + time));
+            position.y = FunctionLibrary.Wave(position.x, time);
 
             point.localPosition = position;
         }
